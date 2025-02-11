@@ -2,7 +2,8 @@ import axios from "axios";
 import logger from "./logService";
 
 const res: any = null;
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = "https://api.steviapro.com/api";
 
 
 axios.interceptors.response.use(res, (error) => {
