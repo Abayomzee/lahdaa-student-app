@@ -5,10 +5,7 @@ import React from "react";
 import { Wrapper } from "./style";
 
 import { OnboardingTemplate } from "components/templates/OnboardingTemplate";
-import { PrimaryButton } from "components/atom/button";
 import Typography from "components/atom/Typography";
-import OtpInput from "components/molecules/Inputs/OtpInput";
-import { Flex } from "styles/layouts/Flex";
 import { VerifyActions } from "components/molecules/VerifyActions";
 
 // Type defination
@@ -21,6 +18,7 @@ const Verify: React.FC<Props> = () => {
     <OnboardingTemplate
       $title="Verify your identity"
       $subTitle="We’ve sent a code to the number ending -28"
+      $contentSize="46.5rem"
     >
       <Wrapper>
         <VerifyActions

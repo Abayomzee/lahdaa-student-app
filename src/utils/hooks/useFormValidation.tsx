@@ -16,7 +16,8 @@ const useFormValidation = () => {
       await schema.validate(payload);
       response = true;
     } catch (err: any) {
-      if (err.errors) errorToast(err.errors);
+      console.log({ errrrrrr: err.errors });
+      if (err.errors.length) errorToast(err.errors[0]);
     }
 
     return response;

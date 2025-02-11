@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { Container, Wrapper } from "./style";
 import { Center } from "styles/layouts/Center";
@@ -5,6 +7,7 @@ import { Logo } from "components/atom/SvgIcon";
 import { Flex } from "styles/layouts/Flex";
 import { Link } from "react-router";
 import Typography from "components/atom/Typography";
+import { appRoutes } from "utils/constants";
 
 // Type defination
 interface Props {}
@@ -20,7 +23,7 @@ const AuthTopNav: React.FC<Props> = () => {
 
           <Flex $gap="2rem" $flexRowAiCenter>
             <Typography as="p" className="p3" text="Don’t have an account?" />
-            <Link to="#" className="l l2">
+            <Link to={appRoutes.REGISTER} className="l l2">
               Sign up
             </Link>
           </Flex>
