@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useTransition } from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 
