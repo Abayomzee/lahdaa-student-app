@@ -36,7 +36,7 @@ const Register: React.FC<Props> = () => {
 
   // Methods
   const formatCountriesForInput = () => {
-    const countriesForInput = countries.map((country) => ({
+    const countriesForInput = countries?.map((country) => ({
       id: country.country_id,
       label: country.country_name,
     }));
