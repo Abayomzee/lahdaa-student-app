@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { Flex } from "styles/layouts/Flex";
 import { Session } from "components/pages/Session";
@@ -20,6 +20,7 @@ const MyLearning: React.FC<Props> = () => {
 
   // Hooks
   let { tab } = useParams();
+  let navigate = useNavigate();
 
   // Data
   const tabs = [
@@ -48,6 +49,7 @@ const MyLearning: React.FC<Props> = () => {
       setTab(tabs[index]);
     } else {
       setTab(tabs[0]);
+      navigate(`/student/learning/${tabs[0].slug}`);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
