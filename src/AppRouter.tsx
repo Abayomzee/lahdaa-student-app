@@ -11,8 +11,6 @@ import { useApi, useToast } from "utils/hooks";
 import endpoints from "services/endpoints";
 import { Verify } from "components/pages/Verify";
 import { Login } from "components/pages/Login";
-import { Session } from "components/pages/Session";
-import { Workshop } from "components/pages/Workshop";
 import { ProtectedRoute } from "components/atom/ProtectedRoute";
 import { MyLearning } from "components/pages/MyLearning";
 
@@ -72,22 +70,6 @@ const AnimatedRoutes: React.FC<AnimatedProps> = () => {
           element={
             <ProtectedRoute>
               <Verify />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path={appRoutes.WORKSHOP}
-          element={
-            <ProtectedRoute>
-              <Workshop />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path={appRoutes.SESSION}
-          element={
-            <ProtectedRoute>
-              <Session />
             </ProtectedRoute>
           }
         />

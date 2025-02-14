@@ -67,7 +67,7 @@ const Login: React.FC<Props> = () => {
       userLogIn(res?.userData);
 
       clearFormValues();
-      navigate(appRoutes.WORKSHOP);
+      navigate(appRoutes.LEARNING);
     }
   };
 
