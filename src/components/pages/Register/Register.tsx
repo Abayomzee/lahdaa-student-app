@@ -11,7 +11,7 @@ import IconButton from "components/atom/button/IconButton";
 import { OnboardingTemplate } from "components/templates/OnboardingTemplate";
 import Typography from "components/atom/Typography";
 import { PrimaryButton } from "components/atom/button";
-import { useAppStore } from "store";
+import { useAppStore, useAuthStore } from "store";
 import useFormValidation from "utils/hooks/useFormValidation";
 import { useApi, useToast } from "utils/hooks";
 import endpoints from "services/endpoints";
@@ -34,6 +34,7 @@ const Register: React.FC<Props> = () => {
 
   // Store
   const { countries } = useAppStore();
+  const { setRegisteringUserEmail } = useAuthStore();
 
   // Hooks
   const { validateForm } = useFormValidation();
@@ -54,7 +55,7 @@ const Register: React.FC<Props> = () => {
   };
 
   const handleFormChanges = (name: string, value: any) => {
-    setFormValues((values) => ({ ...formValues, [name]: value }));
+    setFormValues((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = async () => {
@@ -74,18 +75,9 @@ const Register: React.FC<Props> = () => {
       return;
     }
 
-    /**
- * {
-    "message": "Registration Successful",
-    "user_id": 41,
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiZTVjZjBjOTMzZjQwZGYwMzNiMTQ4M2U1MWE2YTRjZTg3MTNiODVkZWE0NTEzOGEzODA5OWY5NWUzMzE1ZmE2NzI2ODQ5ZTFkZmMwYTBiODgiLCJpYXQiOjE3MzkyNjAyMzEuNzQyNzQ2LCJuYmYiOjE3MzkyNjAyMzEuNzQyNzQ4LCJleHAiOjE3NzA3OTYyMzEuNzM0NDk2LCJzdWIiOiI0MSIsInNjb3BlcyI6W119.XXpb1KOJrkA3nroOEiEvmfAH0OQ5hP46wFSXgJR27ynrYoEp8oC3FzWP1bSmD8GMzcgdbbnlVmeFds-NSt3DV8NBf3LXc-QSWpDBegFhtTHdEmSLpZ8YASCRTvUPc4YZXiGgpltGExt-S9Ru6asFapuD1eRgwjCzlrX3-lXPdAZsthrOVZXLzDjw4iPtgxJAc09Guv1P8L4aDmqi_B6AMvW3TJiW00PoxvaaGLiJXvoq42rCK-0lScpQUxDaht4VtYsXBiZXYLIXSEmOz5A9D46X2AqbpaQ-cR_PJzsxWFlehTCeXa7bEkmEYbpLYA8v0JsU9ojs5oxB_r5p4WtbrJbHzsSpbeSzvw9QahMElfCbXYQTmgtjnj-8rQDmVegoZUn-NcYeLkDKocpgBIM5ZQtY8ghPr89UFEeTVlEOUVWHFKcKgZLD_I5pyIrJjrcj1epKKgCmMGIRu4x3ODJQkl1ITCi2jCkyt_kBtgYld-21dN-KE03y-ZcmdB5OCN6fWgR1Yor92TiSsBowv0DYvhxrvRx1c-Q6uNmvibP8dgpHlWQ_fQX3RLqvyis_YrfPK7amODDPeu2im2sdpBJbFkRXm1D_aXI_ISGLpdjLBKB5EA3hsAlyl9-tix0GasSmerIY-8Tc1_tdMYF3Lj5LASwTBRwJ-dq1mX8rw3_FiQ0",
-    "email": "ab1@yopmail.com",
-    "activation_code": "VbbHCv90O52NZhJf67lqoJUuEnPQ7zqJ",
-    "activation_url": "https://app.steviapro.com/verify/VbbHCv90O52NZhJf67lqoJUuEnPQ7zqJ"
-}
- */
     if (res.message === "Registration Successful") {
       successToast("Account registered successfully");
+      setRegisteringUserEmail(res?.email);
       clearFormValues();
       navigate(appRoutes.VERIFY);
     }

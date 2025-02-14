@@ -7,12 +7,16 @@ import { Wrapper } from "./style";
 import { OnboardingTemplate } from "components/templates/OnboardingTemplate";
 import Typography from "components/atom/Typography";
 import { VerifyActions } from "components/molecules/VerifyActions";
+import { useAuthStore } from "store";
 
 // Type defination
 interface Props {}
 
 // Component
 const Verify: React.FC<Props> = () => {
+  // Store
+  const { registeringUserEmail } = useAuthStore();
+
   // Data to display
   return (
     <OnboardingTemplate
@@ -23,7 +27,7 @@ const Verify: React.FC<Props> = () => {
       <Wrapper>
         <VerifyActions
           $title="Email code to"
-          $description="maxbert22@email.com"
+          $description={registeringUserEmail || "--"}
         />
         <VerifyActions
           $title="Text code to number in -27"

@@ -13,10 +13,17 @@ export interface AppStoreProps {
 }
 
 export interface AuthStoreProps {
+  // Data
   userData: any;
   updatedUserData: any;
+  // ========
+  registeringUserEmail?: string;
+
+  // Methods
+  userLogOut: () => void;
   userLogIn: (data: object) => void;
   setUserData: (data: object) => void;
   updateUserData: (data: object) => void;
-  userLogOut: () => void;
+  // =========
+  setRegisteringUserEmail: (email: string) => void;
 }

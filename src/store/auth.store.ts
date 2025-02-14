@@ -1,3 +1,5 @@
+/** @format */
+
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
@@ -9,6 +11,8 @@ const useAuthStore = create<AuthStoreProps>()(
       devtools((set) => ({
         userData: {},
         updatedUserData: {},
+        // ========
+        registeringUserEmail: "",
 
         // Methods
         userLogIn: (data: any) => {
@@ -27,6 +31,9 @@ const useAuthStore = create<AuthStoreProps>()(
         userLogOut: () => {
           set({ userData: {}, updatedUserData: {} });
         },
+        // ===========
+        setRegisteringUserEmail: (registeringUserEmail) =>
+          set({ registeringUserEmail }),
       }))
     ),
     {
