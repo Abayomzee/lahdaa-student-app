@@ -6,6 +6,7 @@ import { Flex } from "styles/layouts/Flex";
 import Typography from "components/atom/Typography";
 import { TabNavigatorDark } from "components/molecules/TabNavigator";
 import { WorkshopCard } from "components/organisms/WorkshopCard";
+import { PageAnimation } from "components/templates/PageAnimation";
 
 // Type defination
 interface Props {}
@@ -14,22 +15,24 @@ interface Props {}
 const Workshop: React.FC<Props> = () => {
   // Data to display
   return (
-    <Wrapper>
-      <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
-        <Typography as="h4" className="h10" text="Workshop" />
+    <PageAnimation>
+      <Wrapper>
+        <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
+          <Typography as="h4" className="h10" text="Workshop" />
 
-        <TabNavigatorDark $navs={["Upcoming", "Completed"]} />
-      </Flex>
+          <TabNavigatorDark $navs={["Upcoming", "Completed"]} />
+        </Flex>
 
-      <Workshops className="mt-15">
-        {Array.from({ length: 7 }).map(() => (
-          <WorkshopCard />
-        ))}
+        <Workshops className="mt-15">
+          {Array.from({ length: 7 }).map(() => (
+            <WorkshopCard />
+          ))}
 
-        <WorkshopCard $empty />
-        <WorkshopCard $empty />
-      </Workshops>
-    </Wrapper>
+          <WorkshopCard $empty />
+          <WorkshopCard $empty />
+        </Workshops>
+      </Wrapper>
+    </PageAnimation>
   );
 };
 

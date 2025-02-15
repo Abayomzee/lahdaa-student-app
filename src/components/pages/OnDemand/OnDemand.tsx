@@ -3,6 +3,7 @@
 import React from "react";
 import { Wrapper } from "./style";
 import { EmptyDataState } from "components/molecules/EmptyDataState";
+import { PageAnimation } from "components/templates/PageAnimation";
 
 // Type defination
 interface Props {}
@@ -11,12 +12,14 @@ interface Props {}
 const OnDemand: React.FC<Props> = () => {
   // Data to display
   return (
-    <Wrapper>
-      <EmptyDataState
-        $label="Enroll Now"
-        $subLabel="You will see all your enrolled courses here"
-      />
-    </Wrapper>
+    <PageAnimation>
+      <Wrapper>
+        <EmptyDataState
+          $label="Enroll Now"
+          $subLabel="You will see all your enrolled courses here"
+        />
+      </Wrapper>
+    </PageAnimation>
   );
 };
 

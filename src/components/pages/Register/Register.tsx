@@ -79,7 +79,7 @@ const Register: React.FC<Props> = () => {
       successToast("Account registered successfully");
       setRegisteringUserEmail(res?.email);
       clearFormValues();
-      navigate(appRoutes.VERIFY);
+      navigate(appRoutes.LOGIN);
     }
   };
 
