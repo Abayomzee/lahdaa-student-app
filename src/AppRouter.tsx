@@ -85,22 +85,3 @@ const AnimatedRoutes: React.FC<AnimatedProps> = () => {
     </AnimatePresence>
   );
 };
-
-/**
- *  <Route
-            path={appRoutes.WORKSHOP}
-            element={
-              <ProtectedRoute>
-                <Workshop />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path={appRoutes.SESSION}
-            element={
-              <ProtectedRoute>
-                <Session />
-              </ProtectedRoute>
-            }
-          />
- */

@@ -8,6 +8,7 @@ export { ReactComponent as EmailIcon } from "./svgs/email-icon.svg";
 export { ReactComponent as GoogleIcon } from "./svgs/google-icon.svg";
 export { ReactComponent as MessageIcon } from "./svgs/message-icon.svg";
 export { ReactComponent as SpinnerIcon } from "./svgs/spinner-icon.svg";
+export { ReactComponent as CloseModalIcon } from "./svgs/close-icon.svg";
 export { ReactComponent as AvatarIconIcon } from "./svgs/avatar-icon.svg";
 export { ReactComponent as LocationIcon } from "./svgs/location-icon.svg";
 export { ReactComponent as EmptyDataIcon } from "./svgs/empty-data-icon.svg";

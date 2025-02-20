@@ -1,5 +1,11 @@
+/** @format */
+
 import { css } from "styled-components";
-import { FlexRowAiCenter } from "styles/Abstract/Mixins";
+import {
+  FlexRowAiCenter,
+  FlexRowJcCenterAiCenter,
+} from "styles/Abstract/Mixins";
+import { rotateAnimation } from "./Animation";
 
 export const Utilities = css`
   /* Margins */
@@ -473,5 +479,10 @@ export const Utilities = css`
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--color-27);
+  }
+
+  svg.with-spinner {
+    animation: ${rotateAnimation} 1s linear infinite;
+    transform-origin: center;
   }
 `;

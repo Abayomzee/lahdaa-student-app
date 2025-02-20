@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { FlexRowJcCenterAiCenter } from "styles/Abstract/Mixins";
 import { rotateAnimation } from "styles/Base/Animation";
 
-const Button = styled.button`
+export const Button = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;

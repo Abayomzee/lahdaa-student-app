@@ -1,4 +1,9 @@
+/** @format */
+
 import { jwtDecode } from "jwt-decode";
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+dayjs.extend(duration);
 
 export const formatForSelectInput = (data: Array<{}>, key: any, name: any) => {
   return data.map((d: any) => ({ id: d[key], name: d[name] }));
@@ -81,78 +86,6 @@ export const _getQueryString = (data: Record<string, any>): string => {
 export const debounceFunc = (func: any, handler: any, delay: any) => {
   clearTimeout(handler);
   return setTimeout(func, delay);
-};
-
-export const _getBusinessLocationStates = (locations: object[]) => {
-  if (!locations?.length) return [];
-
-  const locationsArr = locations.map(
-    (location: any) => location?.locationState
-  );
-
-  return locationsArr.join("/");
-  /**
- * {
-    "id": "5a253c8b-873c-4b44-b89d-b447cef261e3",
-    "createdAt": "2024-02-05T17:22:00.813Z",
-    "updatedAt": "2024-02-05T17:22:00.813Z",
-    "locationAddress": "68987 Mueller Spur",
-    "locationState": "Rivers",
-    "locationLga": "Ikwerre",
-    "locationCity": "Santa Barbara",
-    "locationLandmark": "Opposite first bank",
-    "longitude": "",
-    "latitude": "",
-    "businessId": "d6d3385e-682a-4df4-8349-e6c99f8a9009"
-}
- */
-};
-
-const _getBusinessHoursDetails = (hours: object[]) => {
-  if (hours) {
-    const date = new Date();
-    const todayIndex = date.getDay();
-
-    return hours[todayIndex];
-  }
-};
-
-export const _getBusinessTimeStatus = (hours: object[]) => {
-  /**
-   * {
-    "label": "Monday",
-    "isOpened": true,
-    "openTime": "09:00",
-    "closeTime": "16:00"
-}
-   */
-  const dayDetails: any = _getBusinessHoursDetails(hours);
-  if (!dayDetails?.isOpened) return false;
-
-  // Get current time
-  // Determine weater to return close or open time
-
-  return null;
-};
-
-export const _getBusinessTodayCloseTime = (hours: object[]) => {
-  /**
-   * {
-    "label": "Monday",
-    "isOpened": true,
-    "openTime": "09:00",
-    "closeTime": "16:00"
-}
-   */
-  const dayDetails: any = _getBusinessHoursDetails(hours);
-  if (!dayDetails?.isOpened) return false;
-
-  // Get current time
-  // Determine weater to return close or open time
-
-  const todyCloseTime = _convertTo12HourFormat(dayDetails.closeTime);
-
-  return todyCloseTime;
 };
 
 export function _convertTimeTo12HourFormat(timeStr: string): string {
@@ -244,104 +177,18 @@ export const _getAxiosErrorMessage = (data: any) => {
   return message;
 };
 
-export const _getMediaForCategory = (
-  medias: any[],
-  categoryName: string
-): any[] => {
-  return medias.filter((media: any) => media.categoryName === categoryName);
-};
-
-export const _getMediaUrlsFromArrayOfObjects = (medias: any[]) => {
-  return medias.map((media: any) => media?.mediaUrl);
-};
-
-export const _getPaymentTypeDescription = (type: string) => {
-  const description: any = {
-    subscriptionPayment: "Subscription",
-    adsPayment: "Ads",
-    eventAdsPayment: "Event",
-    promotionPayment: "Promotion",
-  };
-
-  return description[`${type}`];
-};
-
-export const _getGeneralMapData = (data: any[]) => {
-  if (data && data?.length) {
-    const businessData = data?.map((data) => data?.business);
-    const mapData = businessData?.map((data) => ({
-      lng: data?.latitude || 3.3792,
-      lat: data?.longitude || 6.5244,
-      logo: data?.businessLogo,
-      name: data?.businessName,
-      position: {
-        lng: data?.latitude || 3.3792,
-        lat: data?.longitude || 6.5244,
-      },
-    }));
-    return mapData;
-  } else {
-    return [];
-  }
-};
-
-export const _getExcerpts = (content: string, numOfWords: number = 5) => {
-  const splittedContent = content.split(" ");
-  return `${splittedContent.slice(0, numOfWords).join(" ")}...`;
-};
-
-export const _getBusinessLocationDetails = (restaurant: any) => {
-  const { latitude, longitude } = restaurant?.business;
-  return { latitude, longitude };
-};
-
-export const _getUnclaimedBusinessLocationDetails = (business: any) => {
-  const { latitude, longitude } = business;
-  return { latitude, longitude };
-};
-
-export const _calculateDistance = (
-  userLat: any,
-  userLon: any,
-  businessLat: any,
-  businessLon: any
-) => {
-  const toRadians = (degree: any) => degree * (Math.PI / 180);
-
-  const R = 6371; // Radius of the Earth in kilometers
-  const dLat = toRadians(businessLat - userLat);
-  const dLon = toRadians(businessLon - userLon);
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRadians(userLat)) *
-      Math.cos(toRadians(businessLat)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const distance = R * c; // Distance in kilometers
-
-  return distance;
-};
-
 export const _debounceFunc = (func: any, handler: any, delay: any) => {
   clearTimeout(handler);
   return setTimeout(func, delay);
 };
 
-export const _convertBusinessToRestaurant = (business: any) => {
-  const restaurant = business.restaurant;
-  let newRestaurantObj = {};
-  if (restaurant) {
-    const businessData = { ...business };
-    delete businessData.restaurant;
+export const getTimeDifference = (time1: string, time2: string) => {
+  const t1 = dayjs(`2025-01-01 ${time1}`); // Dummy date to ensure parsing
+  const t2 = dayjs(`2025-01-01 ${time2}`);
 
-    newRestaurantObj = {
-      ...restaurant,
-      business: {
-        ...businessData,
-      },
-    };
-  }
+  const diff = dayjs.duration(t2.diff(t1)); // Get time difference
 
-  return newRestaurantObj;
+  return `${diff.hours()} hour${diff.hours() > 1 ? "s" : ""} ${
+    diff.minutes() > 0 ? `${diff.minutes()} minute` : ""
+  }`;
 };

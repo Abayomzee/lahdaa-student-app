@@ -117,6 +117,13 @@ export const Typography = css`
         color: #9890ff;
       }
     }
+    &14 {
+      font-family: Inter;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 3.2rem;
+      color: #1d1d20;
+    }
   }
 
   /* Paragraphs */
