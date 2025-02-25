@@ -35,11 +35,13 @@ const SessionCard: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       <Top>
-        <img
-          src="/assets/images/session-img.png"
-          alt=""
-          className="workshop-image"
-        />
+        {$data?.thumbnail_file_url && (
+          <img
+            src={$data?.thumbnail_file_url}
+            alt=""
+            className="workshop-image"
+          />
+        )}
         <TopCta>
           <CalenderEmptyIcon />
           Add to Calendar

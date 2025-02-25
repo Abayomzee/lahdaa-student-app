@@ -31,11 +31,13 @@ const WorkshopCard: React.FC<Props> = (props) => {
     <>
       <Wrapper>
         <Top>
-          <img
-            src={$data?.thumbnail_file_url}
-            alt=""
-            className="workshop-image"
-          />
+          {$data?.thumbnail_file_url && (
+            <img
+              src={$data?.thumbnail_file_url}
+              alt=""
+              className="workshop-image"
+            />
+          )}
         </Top>
         <Details>
           <div className="details-item">

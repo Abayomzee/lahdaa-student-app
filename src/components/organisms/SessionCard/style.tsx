@@ -22,6 +22,7 @@ export const Wrapper = styled.div<{ $empty?: boolean }>`
 export const Top = styled.div`
   height: 25.5rem;
   position: relative;
+  background-color: #e3e3e3;
 
   .workshop-image {
     ${ImageDefault}
