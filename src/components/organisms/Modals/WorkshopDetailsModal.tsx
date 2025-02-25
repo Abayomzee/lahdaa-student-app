@@ -143,7 +143,7 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
 
           <IconButton className="link-icon-cta mt-30 text-uppercase w-full">
             Get More Detail
-            <Link2Icon />
+            <Link2Icon width={15} height={15} />
           </IconButton>
         </div>
       </WorkshopDetailsModalStyle>

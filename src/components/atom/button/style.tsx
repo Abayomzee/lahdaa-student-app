@@ -74,6 +74,10 @@ export const IconButtonWrapper = styled(Button)`
   }
 
   &.link-icon-cta {
+    font-family: "DM Sans";
+    font-weight: 400;
+    font-size: 1.4rem;
+
     gap: 1rem;
     padding: 1.2rem 2rem;
     border-radius: 0.4rem;
