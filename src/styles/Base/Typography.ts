@@ -124,6 +124,48 @@ export const Typography = css`
       line-height: 3.2rem;
       color: #1d1d20;
     }
+    &15 {
+      font-family: "DM Sans";
+      font-weight: 300;
+      font-size: 1.2rem;
+      line-height: 135%;
+      color: #141414;
+      text-transform: uppercase;
+    }
+    &16 {
+      font-family: "DM Sans";
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-align: center;
+    }
+    &17 {
+      font-family: "DM Sans";
+      font-weight: 500;
+      font-size: 1.6rem;
+      color: #4a4a4c;
+    }
+    &18 {
+      font-family: "DM Sans";
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 130%;
+      color: #0a0222;
+    }
+    &19 {
+      font-family: "DM Sans";
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+      letter-spacing: 0%;
+      color: #0a0222;
+    }
+    &20 {
+      font-family: "DM Sans";
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 21px;
+      color: #0a0222;
+    }
   }
 
   /* Paragraphs */
@@ -172,6 +214,20 @@ export const Typography = css`
       font-weight: 400;
       line-height: 1.8rem;
       color: #6b7b8a;
+    }
+    &8 {
+      font-family: "DM Sans";
+      font-weight: 400;
+      font-size: 1.3rem;
+      line-height: 130%;
+      color: #1d1d20cc;
+    }
+    &9 {
+      font-family: DM Sans;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: #1d1d20;
     }
   }
   /* Link */

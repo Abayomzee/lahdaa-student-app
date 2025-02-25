@@ -20,6 +20,11 @@ export const Button = styled.button`
     padding-inline: 1rem;
   }
 
+  &.size-2 {
+    padding-block: 1.2rem;
+    padding-inline: 1rem;
+  }
+
   /* Types */
   &.with-spinner {
     ${FlexRowJcCenterAiCenter}
@@ -66,5 +71,14 @@ export const IconButtonWrapper = styled(Button)`
     padding: 0.5rem 1.2rem;
     border-radius: 9999px;
     border: 0.1rem solid #d8d8d8;
+  }
+
+  &.link-icon-cta {
+    gap: 1rem;
+    padding: 1.2rem 2rem;
+    border-radius: 0.4rem;
+    border: 1px solid #5c4fff;
+
+    color: #0000ff;
   }
 `;

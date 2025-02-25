@@ -3,7 +3,6 @@
 import styled from "styled-components";
 import {
   FlexRowAiCenter,
-  FlexRowJcBetweenAiCenter,
   FlexRowJcCenterAiCenter,
   ImageDefault,
 } from "styles/Abstract/Mixins";
@@ -39,7 +38,7 @@ export const TopCta = styled.button`
   gap: .7rem;
 
   border-radius: 2.4rem;
-  padding: .7rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   background-color: #00000099;
   backdrop-filter: blur(4px);
 

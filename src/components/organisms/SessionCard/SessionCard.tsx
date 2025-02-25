@@ -16,16 +16,18 @@ import { CalenderEmptyIcon, LinkIcon, StarIcon } from "components/atom/SvgIcon";
 import { Flex } from "styles/layouts/Flex";
 import { PrimaryButton } from "components/atom/button";
 import { ConnectCalendarCta } from "components/molecules/CalenderNotification/style";
+import dayjs from "dayjs";
 
 // Type defination
 interface Props extends AllHTMLAttributes<HTMLDivElement> {
   $empty?: boolean;
+  $data?: any;
 }
 
 // Component
 const SessionCard: React.FC<Props> = (props) => {
   // Props
-  const { $empty } = props;
+  const { $empty, $data } = props;
 
   // Data to display
   if ($empty) return <Wrapper $empty={$empty}></Wrapper>;
@@ -46,30 +48,46 @@ const SessionCard: React.FC<Props> = (props) => {
       <Details>
         <div className="details-item">
           <Typography as="h6" className="h4" text="Duration" />
-          <Typography as="p" className="p4" text="60 mins" />
+          <Typography as="p" className="p4">
+            {`${$data?.session_duration} mins`}
+          </Typography>
         </div>
         <div className="details-item">
           <Typography as="h6" className="h4" text="Channel" />
-          <Typography as="p" className="p4" text="Zoom" />
+          <Typography as="p" className="p4" text="??" />
         </div>
         <div className="details-item">
-          <Typography as="h6" className="h4" text="Feb 15, 2023" />
-          <Typography as="p" className="p4" text="06:10AM - 07:00AM WAT" />
+          <Typography
+            as="h6"
+            className="h4"
+            text={`${
+              $data?.start_date
+                ? dayjs($data?.start_date).format("MMM D, YYYY")
+                : "Date ??"
+            }`}
+          />
+          <Typography as="p" className="p4" text="Time ?? - Time ?? WAT" />
+          {/* <Typography as="p" className="p4" text="06:10AM - 07:00AM WAT" /> */}
         </div>
       </Details>
       <Description>
         <Flex $gap=".7rem" $flexRowAiCenter>
           <StarIcon />
-          <Typography as="h5" className="h12" text="5.0" />
+          <Typography
+            as="h5"
+            className="h12"
+            text={$data?.course_rating || "??"}
+          />
         </Flex>
         <Typography as="h5" className="h5 mb-5">
           <>
-            Hamza Farooq <span>Chairman @ Microsoft</span>
+            {$data?.instructor_data[0]?.name || "--"}{" "}
+            <span>{$data?.instructor_data[0]?.professional_title} @ ??</span>
           </>
         </Typography>
 
         <Typography as="h4" className="h6 mw-350">
-          Building LLM applications from scratch into Production
+          {$data?.course_name || "--"}
         </Typography>
       </Description>
 

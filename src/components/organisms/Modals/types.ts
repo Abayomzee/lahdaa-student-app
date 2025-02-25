@@ -7,7 +7,7 @@ export interface ModalsProps extends AllHTMLAttributes<HTMLDivElement> {
   handleFormSuccess?: () => void;
 
   id?: string;
-  data?: any;
+  $data?: any;
   loading?: boolean;
 }
 

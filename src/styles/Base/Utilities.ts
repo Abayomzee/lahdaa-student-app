@@ -3,7 +3,6 @@
 import { css } from "styled-components";
 import {
   FlexRowAiCenter,
-  FlexRowJcCenterAiCenter,
 } from "styles/Abstract/Mixins";
 import { rotateAnimation } from "./Animation";
 
@@ -191,6 +190,9 @@ export const Utilities = css`
   .ml-40 {
     margin-left: 4rem;
   }
+  .ml-30 {
+    margin-left: 3rem;
+  }
   .ml-10 {
     margin-left: 1rem;
   }
@@ -215,6 +217,12 @@ export const Utilities = css`
   }
   .pr-7 {
     padding-right: 0.7rem;
+  }
+  .py-20 {
+    padding-block: 2rem;
+  }
+  .px-10 {
+    padding-inline: 1rem;
   }
 
   /* End of Paddings */

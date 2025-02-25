@@ -169,11 +169,11 @@ const Workshop: React.FC<Props> = () => {
   return (
     <>
       {workshopApi?.loading ? (
-        <PageAnimation>
-          <SpinnerContainer>
+        <SpinnerContainer>
+          <PageAnimation>
             <SpinnerIcon width={22} height={22} className="with-spinner" />
-          </SpinnerContainer>
-        </PageAnimation>
+          </PageAnimation>
+        </SpinnerContainer>
       ) : (
         <PageAnimation>
           <Wrapper>
