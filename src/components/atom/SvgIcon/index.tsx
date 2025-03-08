@@ -21,4 +21,8 @@ export { ReactComponent as CaretRightIcon } from "./svgs/caret-right-icon.svg";
 export { ReactComponent as EmailFilledIcon } from "./svgs/email-filled-icon.svg";
 export { ReactComponent as CalenderNotiIcon } from "./svgs/calender-noti-icon.svg";
 export { ReactComponent as CalenderEmptyIcon } from "./svgs/calendar-empty-icon.svg";
+export { ReactComponent as RightCaretIcon } from "./svgs/right-caret-icon.svg";
+export { ReactComponent as UserCircleIcon } from "./svgs/user-circle-icon.svg";
+export { ReactComponent as UserLearningIcon } from "./svgs/user-learning-icon.svg";
+export { ReactComponent as UserLogoutIcon } from "./svgs/user-logout-icon.svg";
 

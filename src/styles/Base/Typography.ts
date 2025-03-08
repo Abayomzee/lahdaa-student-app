@@ -166,6 +166,13 @@ export const Typography = css`
       line-height: 21px;
       color: #0a0222;
     }
+    &21 {
+      font-family: Inter;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 135%;
+      color: #676e76;
+    }
   }
 
   /* Paragraphs */

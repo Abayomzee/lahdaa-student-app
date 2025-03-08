@@ -1,16 +1,39 @@
-import React from "react";
-import { Container, Wrapper } from "./style";
-import { Center } from "styles/layouts/Center";
-import { AvatarIconIcon, Logo, MenuBurgerIcon } from "components/atom/SvgIcon";
-import { Flex } from "styles/layouts/Flex";
+/** @format */
+
+import React, { useRef, useState } from "react";
 import { Link } from "react-router";
+import { Container, UserCtaContainer, UserDropdown, Wrapper } from "./style";
+import { Center } from "styles/layouts/Center";
+import {
+  AvatarIconIcon,
+  Logo,
+  MenuBurgerIcon,
+  RightCaretIcon,
+  UserCircleIcon,
+  UserLearningIcon,
+  UserLogoutIcon,
+} from "components/atom/SvgIcon";
+import { Flex } from "styles/layouts/Flex";
 import IconButton from "components/atom/button/IconButton";
+import Typography from "components/atom/Typography";
+import { useOnClickOutside } from "utils/hooks";
+import { AnimatePresence } from "framer-motion";
+import { animate_slideUp } from "styles/Base/Animation";
 
 // Type defination
 interface Props {}
 
 // Component
 const DashboardTopNav: React.FC<Props> = () => {
+  // State
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Refs
+  const dropdownRef = useRef<any>();
+
+  // Hooks
+  useOnClickOutside(dropdownRef, () => setShowDropdown(false));
+
   // Data to display
   return (
     <Wrapper $bgWhite>
@@ -29,10 +52,65 @@ const DashboardTopNav: React.FC<Props> = () => {
               On-Demand Courses
             </Link>
 
-            <IconButton className="user-nav-cta">
-              <MenuBurgerIcon />
-              <AvatarIconIcon />
-            </IconButton>
+            <UserCtaContainer ref={dropdownRef}>
+              <IconButton
+                className="user-nav-cta"
+                onClick={() => setShowDropdown(!showDropdown)}
+              >
+                <MenuBurgerIcon />
+                <AvatarIconIcon />
+              </IconButton>
+
+              <AnimatePresence>
+                {showDropdown && (
+                  <UserDropdown
+                    ref={dropdownRef}
+                    variants={animate_slideUp.variants}
+                    exit={animate_slideUp.variants.hidden}
+                    transition={animate_slideUp.transition}
+                    initial="hidden"
+                    animate={showDropdown ? "visible" : "hidden"}
+                  >
+                    <Typography as="h5" className="h21" text="Account" />
+                    <div className="links">
+                      <Link to="#" className="link-item ">
+                        <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
+                          <Flex $gap="1rem" $flexRowAiCenter>
+                            <UserCircleIcon width={19} height={19} /> Profile
+                          </Flex>
+                          <RightCaretIcon />
+                        </Flex>
+                      </Link>
+                      <Link to="#" className="link-item ">
+                        <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
+                          <Flex $gap="1rem" $flexRowAiCenter>
+                            <UserLearningIcon width={19} height={19} /> My
+                            learning
+                          </Flex>
+                          <RightCaretIcon />
+                        </Flex>
+                      </Link>
+                      <Link to="#" className="link-item ">
+                        <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
+                          <Flex $gap="1rem" $flexRowAiCenter>
+                            <UserCircleIcon width={19} height={19} /> Setting
+                          </Flex>
+                          <RightCaretIcon />
+                        </Flex>
+                      </Link>
+                      <Link to="#" className="link-item ">
+                        <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
+                          <Flex $gap="1rem" $flexRowAiCenter>
+                            <UserLogoutIcon width={19} height={19} /> Log Out
+                          </Flex>
+                          <RightCaretIcon />
+                        </Flex>
+                      </Link>
+                    </div>
+                  </UserDropdown>
+                )}
+              </AnimatePresence>
+            </UserCtaContainer>
           </Flex>
         </Container>
       </Center>

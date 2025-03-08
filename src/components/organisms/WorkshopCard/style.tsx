@@ -83,5 +83,11 @@ export const Ctas = styled.div`
     font-size: 1.4rem;
     font-weight: 700;
     color: #5c4fff;
+
+    &:disabled {
+      background: #eef0ffc2;
+      color: #ced2d6;
+      cursor: not-allowed;
+    }
   }
 `;

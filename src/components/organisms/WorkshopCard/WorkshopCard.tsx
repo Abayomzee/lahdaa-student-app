@@ -89,7 +89,9 @@ const WorkshopCard: React.FC<Props> = (props) => {
           >
             See Details <ArrowRightIcon />
           </Link>
-          <button className="details-cta">Join Now</button>
+          <button className="details-cta" disabled>
+            Join Now
+          </button>
         </Ctas>
       </Wrapper>
 
