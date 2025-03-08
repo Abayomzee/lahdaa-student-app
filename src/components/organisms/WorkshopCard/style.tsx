@@ -18,6 +18,8 @@ export const Wrapper = styled.div<{ $empty?: boolean }>`
 
   border-radius: 1.57rem;
   overflow: hidden;
+  flex-direction: column;
+  display: flex;
 `;
 
 export const Top = styled.div`
@@ -48,6 +50,7 @@ export const Details = styled.div`
 export const Description = styled.div`
   padding: 3rem;
   border-bottom: 0.98px solid #e9e9e9;
+  flex-grow: 1;
 `;
 
 export const Ctas = styled.div`

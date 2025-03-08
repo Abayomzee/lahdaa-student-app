@@ -1,10 +1,26 @@
-import styled from "styled-components";
-import { FlexRowJcCenter, FlexRowJcEndAiCenter } from "styles/Abstract/Mixins";
+/** @format */
 
-export const ModalWrapper = styled.div`
-  ${FlexRowJcCenter}
+import styled from "styled-components";
+import {
+  FlexRow,
+  FlexRowJcCenter,
+  FlexRowJcEnd,
+  FlexRowJcEndAiCenter,
+} from "styles/Abstract/Mixins";
+
+export const ModalWrapper = styled.div<{
+  $position?: "left" | "center" | "right";
+}>`
+  /* ${FlexRowJcCenter} */
   width: 100%;
   transition: all.4s;
+
+  ${({ $position }) =>
+    $position === "left"
+      ? `${FlexRow}`
+      : $position === "right"
+      ? `${FlexRowJcEnd}`
+      : `${FlexRowJcCenter}`}
 `;
 
 export const ModalStyle = styled.div<{ width?: string }>`

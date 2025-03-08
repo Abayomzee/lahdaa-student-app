@@ -9,5 +9,6 @@ export interface ModalsProps extends AllHTMLAttributes<HTMLDivElement> {
   id?: string;
   $data?: any;
   loading?: boolean;
+
 }
 

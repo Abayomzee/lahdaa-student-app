@@ -19,6 +19,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     isLoadingAction,
     modalWidth,
     hideFooter,
+    $position,
 
     ...otherProps
   } = props;
@@ -26,7 +27,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   // Data to display
   return (
     <Overlay>
-      <ModalWrapper>
+      <ModalWrapper $position={$position}>
         <ModalStyle {...otherProps} width={modalWidth}>
           {handleClose && (
             <NormalButton

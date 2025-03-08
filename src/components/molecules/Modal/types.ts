@@ -14,4 +14,6 @@ export interface ModalProps extends AllHTMLAttributes<HTMLDivElement> {
 
   modalWidth?: string;
   hideFooter?: boolean;
+
+  $position?: "left"|"center"|"right"
 }

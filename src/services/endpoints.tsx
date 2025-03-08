@@ -9,6 +9,7 @@ const loginUrl = "/login";
 
 // Workshop endpoints
 const workshopUrl = "/course/get-all-courses-by-course-type";
+const studentCoursesUrl = "/student/get-all-courses-by-course-type";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
@@ -19,6 +20,7 @@ export default {
   registerStudentUrl,
   loginUrl,
 
-  // Workshop endpoints
+  // Courses endpoints
   workshopUrl,
+  studentCoursesUrl,
 };

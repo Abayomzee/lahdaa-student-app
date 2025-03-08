@@ -38,7 +38,12 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
 
   // Data to display
   return (
-    <Modal modalWidth="50rem" className="no-padding" hideFooter>
+    <Modal
+      modalWidth="50rem"
+      className="no-padding"
+      $position="right"
+      hideFooter
+    >
       <WorkshopDetailsModalStyle>
         <div className="top">
           <Typography as="h5" className="h14" text={"Workshop"} />
