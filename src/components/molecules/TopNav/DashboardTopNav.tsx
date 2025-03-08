@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useRef, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Container, UserCtaContainer, UserDropdown, Wrapper } from "./style";
 import { Center } from "styles/layouts/Center";
 import {
@@ -19,6 +19,9 @@ import Typography from "components/atom/Typography";
 import { useOnClickOutside } from "utils/hooks";
 import { AnimatePresence } from "framer-motion";
 import { animate_slideUp } from "styles/Base/Animation";
+import { Button } from "components/atom/button/style";
+import { useAuthStore } from "store";
+import { appRoutes } from "utils/constants";
 
 // Type defination
 interface Props {}
@@ -28,11 +31,21 @@ const DashboardTopNav: React.FC<Props> = () => {
   // State
   const [showDropdown, setShowDropdown] = useState(false);
 
+  // Store
+  const { userLogOut } = useAuthStore();
+
   // Refs
   const dropdownRef = useRef<any>();
 
   // Hooks
+  const navigate = useNavigate();
   useOnClickOutside(dropdownRef, () => setShowDropdown(false));
+
+  // Methods
+  const handleLogout = () => {
+    userLogOut();
+    navigate(appRoutes.LOGIN);
+  };
 
   // Data to display
   return (
@@ -98,14 +111,14 @@ const DashboardTopNav: React.FC<Props> = () => {
                           <RightCaretIcon />
                         </Flex>
                       </Link>
-                      <Link to="#" className="link-item ">
+                      <Button className="link-item" onClick={handleLogout}>
                         <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
                           <Flex $gap="1rem" $flexRowAiCenter>
                             <UserLogoutIcon width={19} height={19} /> Log Out
                           </Flex>
                           <RightCaretIcon />
                         </Flex>
-                      </Link>
+                      </Button>
                     </div>
                   </UserDropdown>
                 )}
