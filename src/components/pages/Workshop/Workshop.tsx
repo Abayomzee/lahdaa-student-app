@@ -23,7 +23,7 @@ const Workshop: React.FC<Props> = () => {
 
   // Methods
   const getWorkshops = async () => {
-    await workshopApi.sendRequest("POST", endpoints.workshopUrl, {
+    await workshopApi.sendRequest("POST", endpoints.studentCoursesUrl, {
       course_type_id: 2,
     });
   };

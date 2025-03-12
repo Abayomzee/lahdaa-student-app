@@ -25,7 +25,7 @@ const Session: React.FC<Props> = () => {
 
   // Methods
   const getSessions = async () => {
-    await sessionsApi.sendRequest("POST", endpoints.workshopUrl, {
+    await sessionsApi.sendRequest("POST", endpoints.studentCoursesUrl, {
       course_type_id: 3,
     });
   };
