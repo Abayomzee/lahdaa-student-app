@@ -11,6 +11,12 @@ const loginUrl = "/login";
 const workshopUrl = "/course/get-all-courses-by-course-type";
 const studentCoursesUrl = "/student/get-all-courses-by-course-type";
 
+const studentUpcomingCoursesUrl = "/student/get-student-upcoming-classes";
+const studentEnrolledCoursesUrl = "/student/get-student-enrolled-courses";
+const studentOngoingCoursesUrl = "/student/get-student-ongoing-courses";
+const studentCompletedCoursesUrl = "/student/get-student-completed-courses";
+const studentCourseWishlistUrl = "/student/get-student-course-wishlist";
+
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   // Utility || Helper endpoints
@@ -23,4 +29,9 @@ export default {
   // Courses endpoints
   workshopUrl,
   studentCoursesUrl,
+  studentOngoingCoursesUrl,
+  studentUpcomingCoursesUrl,
+  studentEnrolledCoursesUrl,
+  studentCompletedCoursesUrl,
+  studentCourseWishlistUrl,
 };

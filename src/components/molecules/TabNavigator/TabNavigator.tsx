@@ -36,7 +36,8 @@ const TabNavigator: React.FC<Props> = (props) => {
     <Wrapper>
       {$tabs?.map((t, i) => (
         <TabNav
-          className={t.slug === tab ? "active" : ""}
+          key={i}
+          className={t.name === tab ? "active" : ""}
           onClick={() => {
             handleTabToggle(tab, i);
             navigate(`/student/learning/${t.slug}`);

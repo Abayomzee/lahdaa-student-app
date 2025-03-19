@@ -3,5 +3,5 @@ export const appRoutes = Object.freeze({
   REGISTER: "/student/register",
   LOGIN: "/student/login",
   VERIFY: "/student/verify",
-  LEARNING: "/student/learning/:tab",
+  LEARNING: "/student/learning/:tab/:tab2"
 });

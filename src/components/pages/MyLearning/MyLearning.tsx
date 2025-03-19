@@ -1,7 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import React from "react";
 
 import { Flex } from "styles/layouts/Flex";
 import { Session } from "components/pages/Session";
@@ -9,57 +8,74 @@ import { Workshop } from "components/pages/Workshop";
 import { OnDemand } from "components/pages/OnDemand";
 import { TabNavigator } from "components/molecules/TabNavigator";
 import { MyLearningTemplate } from "components/templates/MyLearningTemplate";
+import useTabs from "utils/hooks/useTabs";
 
 // Type defination
 interface Props {}
 
 // Component
 const MyLearning: React.FC<Props> = () => {
-  // States
-  const [activeTab, setTab] = useState<any>();
-
-  // Hooks
-  let { tab } = useParams();
-  let navigate = useNavigate();
-
   // Data
   const tabs = [
     {
       label: "Workshops",
-      slug: "workshop",
+      slug: "workshop/upcoming",
+      name: "workshop",
       component: <Workshop />,
+      tabLevel: 1,
     },
     {
       label: "1-on-1 Session",
-      slug: "session",
+      slug: "session/upcoming",
+      name: "session",
       component: <Session />,
+      tabLevel: 1,
     },
     {
       label: "On Demand Course",
-      slug: "on-demand",
+      slug: "on-demand/ongoing",
+      name: "on-demand",
       component: <OnDemand />,
+      tabLevel: 1,
+    },
+    // Session tabs
+    {
+      label: "Upcoming",
+      slug: "session/upcoming",
+      component: <Session />,
+      tabLevel: 2,
+    },
+    {
+      label: "Completed",
+      slug: "session/completed",
+      component: <Session />,
+      tabLevel: 2,
+    },
+    {
+      label: "Missed",
+      slug: "session/missed",
+      component: <Session />,
+      tabLevel: 2,
+    },
+    {
+      label: "Wishlist",
+      slug: "session/wishlist",
+      component: <Session />,
+      tabLevel: 2,
     },
   ];
 
-  // Effects
-  useEffect(() => {
-    const index = tabs.findIndex((t) => t.slug === tab);
-
-    if (index >= 0) {
-      setTab(tabs[index]);
-    } else {
-      setTab(tabs[0]);
-      navigate(`/student/learning/${tabs[0].slug}`);
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab]);
+  // Hooks
+  const { activeTab } = useTabs(tabs, "/student/learning", 1);
 
   // Data to display
   return (
     <MyLearningTemplate>
       <Flex className="mt-30 mb-50" $flexRowJcCenterAiCenter>
-        <TabNavigator $tabs={tabs} $activeTab={activeTab} />
+        <TabNavigator
+          $tabs={tabs.filter((t) => t?.tabLevel === 1)}
+          $activeTab={activeTab}
+        />
       </Flex>
 
       {activeTab && activeTab.component}

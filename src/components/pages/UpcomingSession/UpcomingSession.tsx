@@ -2,9 +2,6 @@
 
 import React, { useEffect } from "react";
 import { Workshops, Wrapper } from "./style";
-import { Flex } from "styles/layouts/Flex";
-import Typography from "components/atom/Typography";
-import { TabNavigatorDark } from "components/molecules/TabNavigator";
 import { WorkshopCard } from "components/organisms/WorkshopCard";
 import { PageAnimation } from "components/templates/PageAnimation";
 import { useApi } from "utils/hooks";
@@ -17,21 +14,25 @@ import { EmptyDataState } from "components/molecules/EmptyDataState";
 interface Props {}
 
 // Component
-const Workshop: React.FC<Props> = () => {
+const UpcomingSession: React.FC<Props> = () => {
   // Api
-  const workshopApi = useApi<any>();
+  const upcomingSessionApi = useApi<any>();
 
   // Methods
-  const getWorkshops = async () => {
+  const getUpcomingSessions = async () => {
     // studentCoursesUrl
-    await workshopApi.sendRequest("POST", endpoints.workshopUrl, {
-      course_type_id: 2,
-    });
+    await upcomingSessionApi.sendRequest(
+      "POST",
+      endpoints.studentUpcomingCoursesUrl,
+      {
+        course_type_id: 3,
+      }
+    );
   };
 
   // Effects
   useEffect(() => {
-    getWorkshops();
+    getUpcomingSessions();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -169,7 +170,7 @@ const Workshop: React.FC<Props> = () => {
   // Data to display
   return (
     <>
-      {workshopApi?.loading ? (
+      {upcomingSessionApi?.loading ? (
         <SpinnerContainer>
           <PageAnimation>
             <SpinnerIcon width={22} height={22} className="with-spinner" />
@@ -178,23 +179,19 @@ const Workshop: React.FC<Props> = () => {
       ) : (
         <PageAnimation>
           <Wrapper>
-            {!workshopApi.data?.courses?.length ? (
+            {!upcomingSessionApi.data?.courses?.length ? (
               <EmptyDataState
                 $label="Enroll Now"
-                $subLabel="You will see all your enrolled courses here"
+                $subLabel="You will see all your upcoming courses here"
               />
             ) : (
               <>
-                <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
-                  <Typography as="h4" className="h10" text="Workshop" />
-
-                  <TabNavigatorDark $navs={["Upcoming", "Completed"]} $url="" />
-                </Flex>
-
                 <Workshops className="mt-15">
-                  {workshopApi?.data?.courses.map((course: any, i: any) => (
-                    <WorkshopCard key={i} $data={course} />
-                  ))}
+                  {upcomingSessionApi?.data?.courses.map(
+                    (course: any, i: any) => (
+                      <WorkshopCard key={i} $data={course} />
+                    )
+                  )}
 
                   <WorkshopCard $empty />
                   <WorkshopCard $empty />
@@ -208,4 +205,4 @@ const Workshop: React.FC<Props> = () => {
   );
 };
 
-export default Workshop;
+export default UpcomingSession;

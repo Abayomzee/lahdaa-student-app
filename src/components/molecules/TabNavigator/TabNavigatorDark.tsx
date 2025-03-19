@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+/** @format */
+
+import React from "react";
 import { DarkWrapper, TabNavDark } from "./style";
+import { useNavigate, useParams } from "react-router";
 
 // Type defination
 interface Props {
-  $navs: any[]
+  $navs: any[];
+  $url: string;
 }
 
 // Component
 const TabNavigatorDark: React.FC<Props> = (props) => {
-  // State
-  const [active, setActive] = useState(0);
+  // Hook
+  const navigate = useNavigate();
+  let { tab2 } = useParams();
 
   // Props
-  const { $navs } = props;
+  const { $navs, $url } = props;
 
   //   Methods
 
@@ -21,10 +26,14 @@ const TabNavigatorDark: React.FC<Props> = (props) => {
     <DarkWrapper>
       {$navs.map((tab, i) => (
         <TabNavDark
-          className={active === i ? "active" : ""}
-          onClick={() => setActive(i)}
+          key={i}
+          // className={active === i ? "active" : ""}
+          className={tab.name === tab2 ? "active" : ""}
+          onClick={() => {
+            navigate(`${$url}/${tab.slug}`);
+          }}
         >
-          {tab}
+          {tab.label}
         </TabNavDark>
       ))}
     </DarkWrapper>
