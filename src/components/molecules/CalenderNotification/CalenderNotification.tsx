@@ -60,9 +60,9 @@ const CalenderNotification: React.FC<Props> = () => {
   };
 
   const signOut = () => {
-    gapi.auth2.getAuthInstance().signOut();
-    console.log("User Signed Out");
-  };
+  gapi.auth2.getAuthInstance().signOut();
+  console.log("User Signed Out");
+};
 
 
 
