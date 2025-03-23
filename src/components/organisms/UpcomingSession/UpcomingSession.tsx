@@ -183,6 +183,7 @@ const UpcomingSession: React.FC<Props> = () => {
               <EmptyDataState
                 $label="Enroll Now"
                 $subLabel="You will see all your upcoming courses here"
+                className="full"
               />
             ) : (
               <>

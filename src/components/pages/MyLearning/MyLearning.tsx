@@ -1,14 +1,21 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
+import { gapi } from "gapi-script";
 
+import useTabs from "utils/hooks/useTabs";
 import { Flex } from "styles/layouts/Flex";
-import { Session } from "components/pages/Session";
-import { Workshop } from "components/pages/Workshop";
-import { OnDemand } from "components/pages/OnDemand";
+import { Session } from "components/organisms/Session";
+import { Workshop } from "components/organisms/Workshop";
+import { OnDemand } from "components/organisms/OnDemand";
 import { TabNavigator } from "components/molecules/TabNavigator";
 import { MyLearningTemplate } from "components/templates/MyLearningTemplate";
-import useTabs from "utils/hooks/useTabs";
+
+// Google Calendar API
+const CLIENT_ID =
+  "226878313650-0oirlul4vcfssgl76uto3cc4a8f6hvdc.apps.googleusercontent.com";
+const API_KEY = "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";
+const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
 // Type defination
 interface Props {}
@@ -67,6 +74,22 @@ const MyLearning: React.FC<Props> = () => {
 
   // Hooks
   const { activeTab } = useTabs(tabs, "/student/learning", 1);
+
+  // Effects
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        scope: SCOPES,
+        discoveryDocs: [
+          "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+        ],
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }, []);
 
   // Data to display
   return (

@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { useEffect } from "react";
+
 import { Wrapper } from "./style";
 import { Flex } from "styles/layouts/Flex";
 import Typography from "components/atom/Typography";
@@ -14,7 +15,7 @@ import { SpinnerContainer } from "styles/Components/SpinnerContainer";
 import { SpinnerIcon } from "components/atom/SvgIcon";
 import { EmptyDataState } from "components/molecules/EmptyDataState";
 import useTabs from "utils/hooks/useTabs";
-import { UpcomingSession } from "../UpcomingSession";
+import { UpcomingSession } from "../../organisms/UpcomingSession";
 
 // Type defination
 interface Props {}

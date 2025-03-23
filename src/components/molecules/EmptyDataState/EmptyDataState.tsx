@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { AllHTMLAttributes } from "react";
 import { Wrapper } from "./style";
 import { EmptyDataIcon } from "components/atom/SvgIcon";
@@ -17,7 +19,7 @@ const EmptyDataState: React.FC<Props> = (props) => {
   // Data to display
   return (
     <Wrapper {...props}>
-      <EmptyDataIcon className="mb-30" />
+      <EmptyDataIcon className="mb-30 w-full" />
       {$label && (
         <Typography as="h4" className="h1 text-center" text={$label} />
       )}

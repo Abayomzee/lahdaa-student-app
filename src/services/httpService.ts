@@ -21,8 +21,9 @@ axios.interceptors.response.use(res, (error) => {
 });
 
 function setToken(token: any) {
-  axios.defaults.headers.common["token"] = token;
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  // axios.defaults.headers.common["token"] = token;
+  axios.defaults.headers.common["AuthToken"] = token;
+  // axios.defaults.headers.common["AuthToken"] = `AuthToken ${token}`;
 }
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
