@@ -11,6 +11,12 @@ import { OnDemand } from "components/organisms/OnDemand";
 import { TabNavigator } from "components/molecules/TabNavigator";
 import { MyLearningTemplate } from "components/templates/MyLearningTemplate";
 
+// Google Calendar API
+const CLIENT_ID =
+  "226878313650-0oirlul4vcfssgl76uto3cc4a8f6hvdc.apps.googleusercontent.com";
+const API_KEY = "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";
+const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+
 // Type defination
 interface Props {}
 
@@ -73,9 +79,9 @@ const MyLearning: React.FC<Props> = () => {
   useEffect(() => {
     function start() {
       gapi.client.init({
-        apiKey: process.env.GOOGLE_API_KEY,
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        scope: process.env.GOOGLE_SCOPES,
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        scope: SCOPES,
         discoveryDocs: [
           "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
         ],
