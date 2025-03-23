@@ -21,13 +21,15 @@ const UpcomingSession: React.FC<Props> = () => {
   // Methods
   const getUpcomingSessions = async () => {
     // studentCoursesUrl
-    await upcomingSessionApi.sendRequest(
+    const ddd = await upcomingSessionApi.sendRequest(
       "POST",
       endpoints.studentUpcomingCoursesUrl,
       {
         course_type_id: 3,
       }
     );
+
+    console.log({ ddd });
   };
 
   // Effects

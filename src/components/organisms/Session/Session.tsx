@@ -42,17 +42,17 @@ const Session: React.FC<Props> = () => {
         />
       ),
     },
-    {
-      label: "Missed",
-      slug: "session/missed",
-      name: "missed",
-      component: (
-        <EmptyDataState
-          $label="Enroll Now Missed"
-          $subLabel="You will see all your enrolled courses here"
-        />
-      ),
-    },
+    // {
+    //   label: "Missed",
+    //   slug: "session/missed",
+    //   name: "missed",
+    //   component: (
+    //     <EmptyDataState
+    //       $label="Enroll Now Missed"
+    //       $subLabel="You will see all your enrolled courses here"
+    //     />
+    //   ),
+    // },
     {
       label: "Wishlist",
       slug: "session/wishlist",
