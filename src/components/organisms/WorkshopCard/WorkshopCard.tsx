@@ -6,7 +6,7 @@ import Typography from "components/atom/Typography";
 import { Link } from "react-router";
 import { ArrowRightIcon } from "components/atom/SvgIcon";
 import dayjs from "dayjs";
-import { getTimeDifference } from "utils/helper";
+import { _convertTo12HourFormat, getTimeDifference } from "utils/helper";
 import { AnimatePresence } from "framer-motion";
 import { WorkshopDetailsModal } from "../Modals";
 
@@ -45,17 +45,23 @@ const WorkshopCard: React.FC<Props> = (props) => {
             <Typography as="p" className="p4" text="Workshop" />
           </div>
           <div className="details-item">
-            <Typography as="h6" className="h4" text="Date" />
+            <Typography
+              as="h6"
+              className="h4"
+              text={`${dayjs($data?.course_times[0]?.start_date).format(
+                "MMM D, YYYY"
+              )}`}
+            />
             {/* <Typography as="p" className="p4" text="Jan 9 - Jan 10, 2024" /> */}
             <Typography as="p" className="p4">
-              {`${dayjs($data?.course_times[0]?.start_date).format(
-                "MMM D"
-              )} -  ${
-                $data?.course_times[0]?.end_date
-                  ? dayjs($data?.course_times[0]?.end_date).format(
-                      "MMM D, YYYY"
-                    )
-                  : "??"
+              {`${
+                $data?.course_times[0]?.start_time
+                  ? _convertTo12HourFormat($data?.course_times[0]?.start_time)
+                  : "--"
+              } -  ${
+                $data?.course_times[0]?.end_time
+                  ? _convertTo12HourFormat($data?.course_times[0]?.end_time)
+                  : "--"
               }`}
             </Typography>
           </div>
