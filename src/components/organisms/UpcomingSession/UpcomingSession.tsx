@@ -1,43 +1,47 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Workshops, Wrapper } from "./style";
 import { WorkshopCard } from "components/organisms/WorkshopCard";
 import { PageAnimation } from "components/templates/PageAnimation";
-import { useApi } from "utils/hooks";
-import endpoints from "services/endpoints";
 import { SpinnerContainer } from "styles/Components/SpinnerContainer";
 import { SpinnerIcon } from "components/atom/SvgIcon";
 import { EmptyDataState } from "components/molecules/EmptyDataState";
 
 // Type defination
-interface Props {}
+interface Props {
+  $data?: any;
+  $loading?: boolean;
+}
 
 // Component
-const UpcomingSession: React.FC<Props> = () => {
+const UpcomingSession: React.FC<Props> = (props) => {
+  // Props
+  const { $data, $loading } = props;
+
   // Api
-  const upcomingSessionApi = useApi<any>();
+  // const upcomingSessionApi = useApi<any>();
 
   // Methods
-  const getUpcomingSessions = async () => {
-    // studentCoursesUrl
-    const ddd = await upcomingSessionApi.sendRequest(
-      "POST",
-      endpoints.studentUpcomingCoursesUrl,
-      {
-        course_type_id: 3,
-      }
-    );
+  // const getUpcomingSessions = async () => {
+  //   // studentCoursesUrl
+  //   const ddd = await upcomingSessionApi.sendRequest(
+  //     "POST",
+  //     endpoints.studentUpcomingCoursesUrl,
+  //     {
+  //       course_type_id: 3,
+  //     }
+  //   );
 
-    console.log({ ddd });
-  };
+  //   console.log({ ddd });
+  // };
 
-  // Effects
-  useEffect(() => {
-    getUpcomingSessions();
+  // // Effects
+  // useEffect(() => {
+  //   getUpcomingSessions();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   /**
    * {
@@ -172,7 +176,7 @@ const UpcomingSession: React.FC<Props> = () => {
   // Data to display
   return (
     <>
-      {upcomingSessionApi?.loading ? (
+      {$loading ? (
         <SpinnerContainer>
           <PageAnimation>
             <SpinnerIcon width={22} height={22} className="with-spinner" />
@@ -181,7 +185,7 @@ const UpcomingSession: React.FC<Props> = () => {
       ) : (
         <PageAnimation>
           <Wrapper>
-            {!upcomingSessionApi.data?.courses?.length ? (
+            {!$data?.courses?.length ? (
               <EmptyDataState
                 $label="Enroll Now"
                 $subLabel="You will see all your upcoming courses here"
@@ -190,11 +194,9 @@ const UpcomingSession: React.FC<Props> = () => {
             ) : (
               <>
                 <Workshops className="mt-15">
-                  {upcomingSessionApi?.data?.courses.map(
-                    (course: any, i: any) => (
-                      <WorkshopCard key={i} $data={course} />
-                    )
-                  )}
+                  {$data?.map((course: any, i: any) => (
+                    <WorkshopCard key={i} $data={course} />
+                  ))}
 
                   <WorkshopCard $empty />
                   <WorkshopCard $empty />

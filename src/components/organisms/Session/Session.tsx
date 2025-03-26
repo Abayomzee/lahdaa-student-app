@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Wrapper } from "./style";
 import { Flex } from "styles/layouts/Flex";
@@ -22,6 +22,11 @@ interface Props {}
 
 // Component
 const Session: React.FC<Props> = () => {
+  // Api
+  const sessionsApi = useApi<any>();
+  
+  // State
+  const [data, setData] = useState([]);
   // Data
   const sessionTabUrl = "/student/learning";
   const tabs = [
@@ -29,7 +34,9 @@ const Session: React.FC<Props> = () => {
       label: "Upcoming",
       slug: "session/upcoming",
       name: "upcoming",
-      component: <UpcomingSession />,
+      component: (
+        <UpcomingSession $data={data} $loading={sessionsApi?.loading} />
+      ),
     },
     {
       label: "Completed",
@@ -69,9 +76,6 @@ const Session: React.FC<Props> = () => {
   //  Hooks
   const { activeTab, tabLevel2Name } = useTabs(tabs, sessionTabUrl, 1);
 
-  // Api
-  const sessionsApi = useApi<any>();
-
   // Methods
   const getSessions = async () => {
     const sessionCategories: any = {
@@ -81,9 +85,14 @@ const Session: React.FC<Props> = () => {
       missed: endpoints.studentOngoingCoursesUrl, //*************** */
     };
     // studentCoursesUrl
-    await sessionsApi.sendRequest("POST", sessionCategories[tabLevel2Name], {
-      course_type_id: 3,
-    });
+    const fff = await sessionsApi.sendRequest(
+      "POST",
+      sessionCategories[tabLevel2Name],
+      {
+        course_type_id: 3,
+      }
+    );
+    setData(fff?.data);
   };
 
   // Effects

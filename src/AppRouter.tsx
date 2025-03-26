@@ -13,6 +13,7 @@ import { Verify } from "components/pages/Verify";
 import { Login } from "components/pages/Login";
 import { ProtectedRoute } from "components/atom/ProtectedRoute";
 import { MyLearning } from "components/pages/MyLearning";
+import { ErrorBoundary } from "components/atom/ErrorBoundary";
 
 interface Props {}
 const AppRouter: React.FC<Props> = () => {
@@ -61,27 +62,29 @@ interface AnimatedProps {}
 const AnimatedRoutes: React.FC<AnimatedProps> = () => {
   const location = useLocation();
   return (
-    <AnimatePresence>
-      <Routes location={location} key={location.pathname}>
-        <Route path={appRoutes.REGISTER} element={<Register />} />
-        <Route path={appRoutes.LOGIN} element={<Login />} />
-        <Route
-          path={appRoutes.VERIFY}
-          element={
-            <ProtectedRoute>
-              <Verify />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path={appRoutes.LEARNING}
-          element={
-            <ProtectedRoute>
-              <MyLearning />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </AnimatePresence>
+    <ErrorBoundary>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path={appRoutes.REGISTER} element={<Register />} />
+          <Route path={appRoutes.LOGIN} element={<Login />} />
+          <Route
+            path={appRoutes.VERIFY}
+            element={
+              <ProtectedRoute>
+                <Verify />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={appRoutes.LEARNING}
+            element={
+              <ProtectedRoute>
+                <MyLearning />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 };

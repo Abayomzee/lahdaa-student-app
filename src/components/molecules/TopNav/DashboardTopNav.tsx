@@ -55,13 +55,25 @@ const DashboardTopNav: React.FC<Props> = () => {
           <Logo />
 
           <Flex $gap="3.3rem" $flexRowAiCenter>
-            <Link to="#" className="l l1">
+            <Link
+              to="https://web-app-blue-tau.vercel.app/workshops"
+              className="l l1"
+              target="_blank"
+            >
               Workshops
             </Link>
-            <Link to="#" className="l l1">
+            <Link
+              to="https://web-app-blue-tau.vercel.app/one-on-one"
+              className="l l1"
+              target="_blank"
+            >
               1-on-1 Session
             </Link>
-            <Link to="#" className="l l1">
+            <Link
+              to="https://web-app-blue-tau.vercel.app/on-demand-courses"
+              className="l l1"
+              target="_blank"
+            >
               On-Demand Courses
             </Link>
 
