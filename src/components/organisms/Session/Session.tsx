@@ -27,6 +27,7 @@ const Session: React.FC<Props> = () => {
   
   // State
   const [data, setData] = useState([]);
+  
   // Data
   const sessionTabUrl = "/student/learning";
   const tabs = [
@@ -112,6 +113,7 @@ const Session: React.FC<Props> = () => {
 
       <Flex className="mb-50" $gap="1rem" $flexRowJcBetweenAiCenter>
         <TabNavigatorDark $navs={tabs} $url={sessionTabUrl} />
+
         <Flex $gap="1.5rem" $flexRowAiCenter>
           <Typography as="h4" className="h11">
             <>

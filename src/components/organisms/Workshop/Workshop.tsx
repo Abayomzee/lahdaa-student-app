@@ -21,6 +21,32 @@ const Workshop: React.FC<Props> = () => {
   // Api
   const workshopApi = useApi<any>();
 
+  // Data
+  const tabs = [
+    {
+      label: "Upcoming",
+      slug: "workshop/upcoming",
+      name: "upcoming",
+      component: (
+        <EmptyDataState
+          $label="Enroll Now Completed"
+          $subLabel="You will see all your enrolled courses here"
+        />
+      ),
+    },
+    {
+      label: "Completed",
+      slug: "workshop/completed",
+      name: "completed",
+      component: (
+        <EmptyDataState
+          $label="Enroll Now Completed"
+          $subLabel="You will see all your enrolled courses here"
+        />
+      ),
+    },
+  ];
+
   // Methods
   const getWorkshops = async () => {
     // studentCoursesUrl workshopUrl
@@ -169,6 +195,12 @@ const Workshop: React.FC<Props> = () => {
   // Data to display
   return (
     <>
+      <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
+        <Typography as="h4" className="h10" text="Workshop" />
+
+        <TabNavigatorDark $navs={tabs} />
+      </Flex>
+
       {workshopApi?.loading ? (
         <SpinnerContainer>
           <PageAnimation>
@@ -185,12 +217,6 @@ const Workshop: React.FC<Props> = () => {
               />
             ) : (
               <>
-                <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
-                  <Typography as="h4" className="h10" text="Workshop" />
-
-                  <TabNavigatorDark $navs={["Upcoming", "Completed"]} $url="" />
-                </Flex>
-
                 <Workshops className="mt-15">
                   {workshopApi?.data?.courses.map((course: any, i: any) => (
                     <WorkshopCard key={i} $data={course} />

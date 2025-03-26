@@ -44,6 +44,19 @@ const MyLearning: React.FC<Props> = () => {
       component: <OnDemand />,
       tabLevel: 1,
     },
+    // Workshop tabs
+    {
+      label: "Upcoming",
+      slug: "workshop/upcoming",
+      component: <Workshop />,
+      tabLevel: 2,
+    },
+    {
+      label: "Completed",
+      slug: "workshop/completed",
+      component: <Workshop />,
+      tabLevel: 2,
+    },
     // Session tabs
     {
       label: "Upcoming",

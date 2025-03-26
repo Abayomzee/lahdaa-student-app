@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router";
 // Type defination
 interface Props {
   $navs: any[];
-  $url: string;
+  $url?: string;
 }
 
 // Component
@@ -17,7 +17,7 @@ const TabNavigatorDark: React.FC<Props> = (props) => {
   let { tab2 } = useParams();
 
   // Props
-  const { $navs, $url } = props;
+  const { $navs, $url = "/student/learning" } = props;
 
   //   Methods
 
