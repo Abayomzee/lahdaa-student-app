@@ -106,7 +106,7 @@ const DashboardTopNav: React.FC<Props> = () => {
                           <RightCaretIcon />
                         </Flex>
                       </Link>
-                      <Link to="#" className="link-item ">
+                      <Link to={appRoutes.LEARNING} className="link-item ">
                         <Flex $gap="7rem" $flexRowJcBetweenAiCenter>
                           <Flex $gap="1rem" $flexRowAiCenter>
                             <UserLearningIcon width={19} height={19} /> My
