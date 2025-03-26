@@ -31,7 +31,9 @@ export const Top = styled.div`
 `;
 
 export const Details = styled.div`
-  ${FlexRowJcCenterAiCenter}
+  /* ${FlexRowJcCenterAiCenter} */
+  ${FlexRowJcBetweenAiCenter}
+  justify-content: space-around;
 
   border-bottom: 0.98px solid #e9e9e9;
   padding: 1.4rem;
