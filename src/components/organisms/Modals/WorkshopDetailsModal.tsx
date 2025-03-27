@@ -23,6 +23,7 @@ import {
   PrimaryButton,
 } from "components/atom/button";
 import { Flex } from "styles/layouts/Flex";
+import { Countdown } from "components/atom/Countdown";
 
 // Component
 const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
@@ -54,7 +55,12 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
         </div>
         <div className="body">
           <Typography as="h4" className="h15 text-center">
-            Starting in - 03days : 18hrs : 45mins
+            <>
+              <Countdown
+                targetDate={$data?.course_times[0]?.start_date}
+                startTime={$data?.course_times[0]?.start_time}
+              />
+            </>
           </Typography>
           <div className="thumbnail mt-25">
             <img src={$data?.thumbnail_file_url} alt="" />

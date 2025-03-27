@@ -62,7 +62,7 @@ const WorkshopCard: React.FC<Props> = (props) => {
                 $data?.course_times[0]?.end_time
                   ? _convertTo12HourFormat($data?.course_times[0]?.end_time)
                   : "--"
-              }`}
+              } ${$data?.course_times[0].timezone_abbr}`}
             </Typography>
           </div>
           <div className="details-item">
