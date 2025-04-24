@@ -9,6 +9,6 @@ export interface ModalsProps extends AllHTMLAttributes<HTMLDivElement> {
   id?: string;
   $data?: any;
   loading?: boolean;
-
 }
 
+export interface WorkshopLocationsProps  { in_person: "in_person"; online: "online"; }

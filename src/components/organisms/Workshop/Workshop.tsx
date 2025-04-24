@@ -50,7 +50,7 @@ const Workshop: React.FC<Props> = () => {
   // Methods
   const getWorkshops = async () => {
     // studentCoursesUrl workshopUrl
-    await workshopApi.sendRequest("POST", endpoints.workshopUrl, {
+    await workshopApi.sendRequest("POST", endpoints.studentCoursesUrl, {
       course_type_id: 2,
     });
   };
@@ -195,7 +195,7 @@ const Workshop: React.FC<Props> = () => {
   // Data to display
   return (
     <>
-      <Flex $gap="1rem" $flexRowJcBetweenAiCenter>
+      <Flex className="mb-50" $gap="1rem" $flexRowJcBetweenAiCenter>
         <Typography as="h4" className="h10" text="Workshop" />
 
         <TabNavigatorDark $navs={tabs} />

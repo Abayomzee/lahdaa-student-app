@@ -17,6 +17,7 @@ const OnDemand: React.FC<Props> = () => {
         <EmptyDataState
           $label="Enroll Now"
           $subLabel="You will see all your enrolled courses here"
+          $size="sm"
         />
       </Wrapper>
     </PageAnimation>

@@ -9,6 +9,7 @@ import Typography from "components/atom/Typography";
 interface Props extends AllHTMLAttributes<HTMLDivElement> {
   $label?: string;
   $subLabel?: string;
+  $size?: "sm" | "full";
 }
 
 // Component

@@ -192,3 +192,21 @@ export const getTimeDifference = (time1: string, time2: string) => {
     diff.minutes() > 0 ? `${diff.minutes()} minute` : ""
   }`;
 };
+
+export const _getMeetingPlatformName = (url: string): string => {
+  const lowerUrl = url.toLowerCase();
+
+  if (lowerUrl.includes("zoom.us")) return "Zoom";
+  if (lowerUrl.includes("meet.google.com")) return "Google Meet";
+  if (lowerUrl.includes("teams.microsoft.com")) return "Microsoft Teams";
+  if (lowerUrl.includes("webex.com")) return "Cisco Webex";
+  if (lowerUrl.includes("bluejeans.com")) return "BlueJeans";
+  if (lowerUrl.includes("skype.com")) return "Skype";
+  if (lowerUrl.includes("whereby.com")) return "Whereby";
+  if (lowerUrl.includes("gotomeeting.com")) return "GoToMeeting";
+  if (lowerUrl.includes("jitsi.org")) return "Jitsi Meet";
+  if (lowerUrl.includes("discord.gg") || lowerUrl.includes("discord.com"))
+    return "Discord";
+
+  return "Unknown Platform";
+};

@@ -3,11 +3,16 @@
 import styled from "styled-components";
 import { FlexColumnJcCenterAiCenter } from "styles/Abstract/Mixins";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $size?: "sm" | "full" }>`
   ${FlexColumnJcCenterAiCenter}
 
-  max-width: 90rem;
-  margin-inline: auto;
+  /* max-width: 90rem;
+  margin-inline: auto; */
+  ${({ $size }) =>
+    $size === "sm"
+      ? `max-width: 90rem;
+  margin-inline: auto;`
+      : ""}
   padding: 10rem;
   border-radius: 2.4rem;
 
