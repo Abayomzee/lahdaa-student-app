@@ -25,7 +25,11 @@ import {
 import { Flex } from "styles/layouts/Flex";
 import { Countdown } from "components/atom/Countdown";
 import dayjs from "dayjs";
-import { _convertTo12HourFormat, _getMeetingPlatformName } from "utils/helper";
+import {
+  _convertTo12HourFormat,
+  _getMeetingPlatformName,
+  _isCourseOngoing,
+} from "utils/helper";
 import { Link } from "react-router";
 
 // Component
@@ -43,8 +47,7 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
   const handleDirection = () => {
     const workshopLocation =
       workshopLocations[$data?.location] === "in_person"
-        ? // ? `https://www.google.com/maps/dir/?api=1&destination=${$data?.description}`
-          `https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${$data?.description}`
+        ? `https://www.google.com/maps/dir/?api=1&origin=My+Location&destination=${$data?.description}`
         : `${$data?.meeting_link}`;
 
     return workshopLocation || "#";
@@ -192,8 +195,20 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
                 </div>
               </Flex>
               <Link to={handleDirection()} target="_blank">
-                <PrimaryButton onClick={() => {}} className="w-full size-2">
-                  Get Direction
+                <PrimaryButton
+                  onClick={() => {}}
+                  className="w-full size-2"
+                  disabled={
+                    !_isCourseOngoing(
+                      $data?.course_times[0]?.start_date,
+                      $data?.course_times[0]?.start_time,
+                      $data?.course_times[0]?.end_time
+                    )
+                  }
+                >
+                  {workshopLocations[$data?.location] === "in_person"
+                    ? " Get Direction"
+                    : "Join Now"}
                 </PrimaryButton>
               </Link>
             </div>

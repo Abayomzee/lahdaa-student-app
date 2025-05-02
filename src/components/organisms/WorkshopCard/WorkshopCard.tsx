@@ -6,7 +6,11 @@ import Typography from "components/atom/Typography";
 import { Link } from "react-router";
 import { ArrowRightIcon } from "components/atom/SvgIcon";
 import dayjs from "dayjs";
-import { _convertTo12HourFormat, getTimeDifference } from "utils/helper";
+import {
+  _convertTo12HourFormat,
+  _isCourseOngoing,
+  getTimeDifference,
+} from "utils/helper";
 import { AnimatePresence } from "framer-motion";
 import { WorkshopDetailsModal } from "../Modals";
 
@@ -95,7 +99,16 @@ const WorkshopCard: React.FC<Props> = (props) => {
           >
             See Details <ArrowRightIcon />
           </Link>
-          <button className="details-cta" disabled>
+          <button
+            className="details-cta"
+            disabled={
+              !_isCourseOngoing(
+                $data?.course_times[0]?.start_date,
+                $data?.course_times[0]?.start_time,
+                $data?.course_times[0]?.end_time
+              )
+            }
+          >
             Join Now
           </button>
         </Ctas>

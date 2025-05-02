@@ -210,3 +210,18 @@ export const _getMeetingPlatformName = (url: string): string => {
 
   return "Unknown Platform";
 };
+
+export const _isCourseOngoing = (
+  date: string,
+  start_time: string,
+  end_time: string
+): boolean => {
+  const now = new Date();
+
+  // Combine date with start and end times
+  const startDateTime = new Date(`${date}T${start_time}:00`);
+  const endDateTime = new Date(`${date}T${end_time}:00`);
+
+  // Return true if current time is within the course time
+  return now >= startDateTime && now <= endDateTime;
+};
