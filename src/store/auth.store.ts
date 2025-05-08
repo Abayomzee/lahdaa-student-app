@@ -1,7 +1,7 @@
 /** @format */
 
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { devtools, persist ,createJSONStorage} from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 import { AuthStoreProps } from "./types";
 
@@ -11,6 +11,7 @@ const useAuthStore = create<AuthStoreProps>()(
       devtools((set) => ({
         userData: {},
         updatedUserData: {},
+        gapiUserData: {},
         // ========
         registeringUserEmail: "",
 
@@ -28,6 +29,9 @@ const useAuthStore = create<AuthStoreProps>()(
             "auth_user_data_update"
           );
         },
+          setGapiUserData: (gapiUserData: any) => {
+          set({ gapiUserData }, false, "auth_user_g_login");
+        },
         userLogOut: () => {
           set({ userData: {}, updatedUserData: {} });
         },
@@ -38,6 +42,7 @@ const useAuthStore = create<AuthStoreProps>()(
     ),
     {
       name: "fdtrk_auth_str",
+       storage: createJSONStorage(() => localStorage)
     }
   )
 );

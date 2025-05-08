@@ -24,10 +24,10 @@ interface Props {}
 const Session: React.FC<Props> = () => {
   // Api
   const sessionsApi = useApi<any>();
-  
+
   // State
   const [data, setData] = useState([]);
-  
+
   // Data
   const sessionTabUrl = "/student/learning";
   const tabs = [
@@ -121,7 +121,7 @@ const Session: React.FC<Props> = () => {
               <b>Africa/Lagos</b>
             </>
           </Typography>
-          <ConnectCalendarCta>Update timezone</ConnectCalendarCta>
+          {/* <ConnectCalendarCta>Update timezone</ConnectCalendarCta> */}
         </Flex>
       </Flex>
 

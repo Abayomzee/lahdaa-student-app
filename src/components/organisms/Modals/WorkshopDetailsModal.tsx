@@ -5,17 +5,11 @@ import { Modal } from "components/molecules/Modal";
 import { ModalsProps } from "./types";
 import {
   AddressCard,
-  CalenderCta,
   DetailsDate,
   DetailsTimeNLocation,
   WorkshopDetailsModalStyle,
 } from "./style";
-import {
-  CalenderEmptyIcon,
-  CloseModalIcon,
-  Link2Icon,
-  MapPinIcon,
-} from "components/atom/SvgIcon";
+import { CloseModalIcon, Link2Icon, MapPinIcon } from "components/atom/SvgIcon";
 import Typography from "components/atom/Typography";
 import {
   IconButton,
@@ -31,6 +25,7 @@ import {
   _isCourseOngoing,
 } from "utils/helper";
 import { Link } from "react-router";
+import { AddToCalendar } from "components/atom/AddToCalendar";
 
 // Component
 const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
@@ -86,10 +81,11 @@ const WorkshopDetailsModal: React.FC<ModalsProps> = (props) => {
           <div className="thumbnail mt-25">
             <img src={$data?.thumbnail_file_url} alt="" />
           </div>
-          <CalenderCta className="mx-auto mt-25">
-            <CalenderEmptyIcon />
-            Add to Calendar
-          </CalenderCta>
+
+          <AddToCalendar
+            targetDate={$data?.course_times[0]?.start_date}
+            startTime={$data?.course_times[0]?.start_time}
+          />
           <Typography as="h5" className="h5 mb-5 mt-30">
             <>
               <span>Taught By</span> {$data?.instructor_data[0]?.name || "--"}

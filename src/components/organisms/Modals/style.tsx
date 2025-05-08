@@ -52,6 +52,12 @@ export const CalenderCta = styled.button`
   font-size: 1rem;
   color: #ffffff;
   text-transform: uppercase;
+
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 export const DetailsTimeNLocation = styled.div`

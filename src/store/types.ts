@@ -16,6 +16,7 @@ export interface AuthStoreProps {
   // Data
   userData: any;
   updatedUserData: any;
+  gapiUserData: any;
   // ========
   registeringUserEmail?: string;
 
@@ -24,6 +25,7 @@ export interface AuthStoreProps {
   userLogIn: (data: object) => void;
   setUserData: (data: object) => void;
   updateUserData: (data: object) => void;
+  setGapiUserData: (data: object) => void;
   // =========
   setRegisteringUserEmail: (email: string) => void;
 }
